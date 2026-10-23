@@ -197,7 +197,7 @@ test('published retired digits and competing PRs advance the merge-time allocati
         () =>
           validateLayerStateAllocations(published, {
             ...published,
-            competing:'6',
+            competing: '6',
           }),
         /next free token 7/,
       );

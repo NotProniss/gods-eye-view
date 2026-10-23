@@ -263,7 +263,9 @@ export function createDriveBcLayer({
           : Date.now();
         stale = snapshot.stale === true;
         partial = snapshot.partial === true;
-        lastError = stale ? msg('Showing a recent cached DriveBC snapshot') : null;
+        lastError = stale
+          ? msg('Showing a recent cached DriveBC snapshot')
+          : null;
         return true;
       } catch (error) {
         if (current.signal.aborted || request !== current || !enabled)

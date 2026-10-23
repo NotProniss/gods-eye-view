@@ -109,7 +109,8 @@ export function createDriveBcEventPopup({ container } = {}) {
       )
         return false;
       const style = driveBcSeverityStyle(event.severity);
-      title.textContent = event.headline || event.eventType || msg('BC road event');
+      title.textContent =
+        event.headline || event.eventType || msg('BC road event');
       severityText.textContent = event.severity
         ? `${String(event.severity).toUpperCase()} · ${style.colorName}`
         : msg(`UNSPECIFIED · ${style.colorName}`);

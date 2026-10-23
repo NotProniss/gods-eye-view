@@ -242,7 +242,7 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
   for (const [id, token] of Object.entries(LEGACY_LAYER_STATE_TOKENS)) {
     assert.equal(LAYER_STATE_TOKEN_RESERVATIONS[id], token);
   }
-  assert.equal(nextLayerStateToken(), '5');
+  assert.equal(nextLayerStateToken(), '6');
   assert.equal(
     nextLayerStateToken({
       ...LAYER_STATE_TOKEN_RESERVATIONS,
@@ -307,8 +307,8 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
   assert.equal(
     validateLayerStateAllocations(LAYER_STATE_TOKEN_RESERVATIONS, {
       ...LAYER_STATE_TOKEN_RESERVATIONS,
-      future: '5',
-      next: '6',
+      future: '6',
+      next: '7',
     }),
     true,
   );
@@ -318,7 +318,7 @@ test('production registry is exact, canonical, and rejects incomplete contracts'
         ...LAYER_STATE_TOKEN_RESERVATIONS,
         future: '00',
       }),
-    /next free token 5/,
+    /next free token 6/,
   );
   const beforeLastDigit = { ...digitsExhausted };
   delete beforeLastDigit['prior-9'];
@@ -2722,11 +2722,11 @@ test('fire perimeters uses digit 2 without colliding with wind or recent imagery
 });
 
 test('DriveBC road conditions use the reserved digit token and round-trip in share state', () => {
-  const decoded = decodeLayerStateParams(new URLSearchParams('v=2&l=3'));
+  const decoded = decodeLayerStateParams(new URLSearchParams('v=2&l=5'));
   assert.deepEqual(decoded.enabledLayerIds, ['drivebc-road-conditions']);
   assert.equal(
     LAYER_STATE_REGISTRY.find(({ id }) => id === 'drivebc-road-conditions')?.token,
-    '3',
+    '5',
   );
   assert.deepEqual(
     decodeLayerStateParams(new URLSearchParams(encode(decoded))),

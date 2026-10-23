@@ -86,6 +86,7 @@ export function normalizeDriveBcSnapshot(payload) {
     events.push({
       id: raw.id.slice(0, 160),
       headline: text(raw.headline, 100),
+      // i18n-ignore: Open511 protocol status value; preserve it verbatim.
       status: raw.status === 'ACTIVE' ? 'ACTIVE' : 'UNKNOWN',
       eventType: text(raw.event_type, 80),
       subtypes: Array.isArray(raw.event_subtypes)
@@ -125,6 +126,7 @@ export function createDriveBcSource({
       const url = new URL(BASE);
       url.search = new URLSearchParams({
         format: 'json',
+        // i18n-ignore: Open511 protocol status value; preserve it verbatim.
         status: 'ACTIVE',
         limit: String(MAX_EVENTS),
       }).toString();

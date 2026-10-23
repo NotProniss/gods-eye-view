@@ -1,3 +1,5 @@
+import { t } from '../../i18n/index.js';
+import { msg } from '../../i18n/marker.js';
 import { driveBcSeverityStyle } from './severity.js';
 
 const EDGE = 8;
@@ -39,7 +41,7 @@ export function createDriveBcEventPopup({ container } = {}) {
   const root = document.createElement('section');
   root.className = 'drivebc-event-popup';
   root.setAttribute('role', 'dialog');
-  root.setAttribute('aria-label', 'DriveBC road event details');
+  root.setAttribute('aria-label', msg('DriveBC road event details'));
   root.setAttribute('aria-live', 'polite');
   root.hidden = true;
 
@@ -50,7 +52,7 @@ export function createDriveBcEventPopup({ container } = {}) {
   const close = document.createElement('button');
   close.type = 'button';
   close.className = 'drivebc-event-popup-close';
-  close.setAttribute('aria-label', 'Close DriveBC event details');
+  close.setAttribute('aria-label', msg('Close DriveBC event details'));
   close.textContent = '×';
   header.append(title, close);
 
@@ -71,7 +73,7 @@ export function createDriveBcEventPopup({ container } = {}) {
   description.className = 'drivebc-event-description';
   const link = document.createElement('a');
   link.className = 'drivebc-event-link';
-  link.textContent = 'Open DriveBC event details ↗';
+  link.textContent = msg('Open DriveBC event details ↗');
   link.target = '_blank';
   link.rel = 'noopener noreferrer';
   link.hidden = true;
@@ -107,16 +109,16 @@ export function createDriveBcEventPopup({ container } = {}) {
       )
         return false;
       const style = driveBcSeverityStyle(event.severity);
-      title.textContent = event.headline || event.eventType || 'BC road event';
+      title.textContent = event.headline || event.eventType || msg('BC road event');
       severityText.textContent = event.severity
         ? `${String(event.severity).toUpperCase()} · ${style.colorName}`
-        : `UNSPECIFIED · ${style.colorName}`;
+        : msg(`UNSPECIFIED · ${style.colorName}`);
       swatch.style.background = style.color;
       root.dataset.severity = style.key.toLowerCase();
-      type.textContent = event.eventType || 'Unspecified';
-      updated.textContent = event.updated || 'Update time unavailable';
+      type.textContent = event.eventType || msg('Unspecified');
+      updated.textContent = event.updated || msg('Update time unavailable');
       description.textContent =
-        event.description || 'No additional event description.';
+        event.description || msg('No additional event description.');
       const url = trustedEventUrl(event.url);
       if (url) {
         link.href = url;

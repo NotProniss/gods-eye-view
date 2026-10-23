@@ -1,3 +1,4 @@
+import { msg } from '../../i18n/marker.js';
 import * as Cesium from 'cesium';
 import { isPointerFree as defaultIsPointerFree } from '../../data/inputOwnership.js';
 import {
@@ -262,12 +263,12 @@ export function createDriveBcLayer({
           : Date.now();
         stale = snapshot.stale === true;
         partial = snapshot.partial === true;
-        lastError = stale ? 'Showing a recent cached DriveBC snapshot' : null;
+        lastError = stale ? msg('Showing a recent cached DriveBC snapshot') : null;
         return true;
       } catch (error) {
         if (current.signal.aborted || request !== current || !enabled)
           return false;
-        lastError = error?.message || 'DriveBC data unavailable';
+        lastError = error?.message || msg('DriveBC data unavailable');
         return false;
       } finally {
         if (request === current) {
@@ -282,7 +283,7 @@ export function createDriveBcLayer({
         legend: DRIVEBC_SEVERITY_STYLES.map(({ label, color, colorName }) => ({
           label,
           color,
-          blurb: `${label} severity · ${colorName}`,
+          blurb: msg(`${label} severity · ${colorName}`),
         })),
         info: 'Road color shows DriveBC event severity, not traffic speed.',
       };

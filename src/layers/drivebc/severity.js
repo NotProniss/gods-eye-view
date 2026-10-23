@@ -1,31 +1,33 @@
+import { msg } from '../../i18n/marker.js';
+
 export const DRIVEBC_SEVERITY_STYLES = Object.freeze([
   Object.freeze({
     key: 'CRITICAL',
-    label: 'Critical',
+    label: msg('Critical'),
     color: '#ff3131',
     colorName: 'red',
   }),
   Object.freeze({
     key: 'MAJOR',
-    label: 'Major',
+    label: msg('Major'),
     color: '#ff5b36',
     colorName: 'orange-red',
   }),
   Object.freeze({
     key: 'MODERATE',
-    label: 'Moderate',
+    label: msg('Moderate'),
     color: '#ffb020',
     colorName: 'amber',
   }),
   Object.freeze({
     key: 'MINOR',
-    label: 'Minor',
+    label: msg('Minor'),
     color: '#ffd166',
     colorName: 'yellow',
   }),
   Object.freeze({
     key: 'UNKNOWN',
-    label: 'Unspecified',
+    label: msg('Unspecified'),
     color: '#59d9ff',
     colorName: 'cyan',
   }),
